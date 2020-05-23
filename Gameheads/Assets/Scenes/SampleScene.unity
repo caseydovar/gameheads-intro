@@ -485,7 +485,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 8104989233951923968, guid: 1a250b299c39f439cbd3eec2f713972d, type: 3}
-  bulletSpawnPoint: {fileID: 879171354}
+  bulletSpawnPoint: {fileID: 1748278163}
   speed: {x: 10, y: 10, z: 10}
   turnSpeed: 15
   jumpForce: 3

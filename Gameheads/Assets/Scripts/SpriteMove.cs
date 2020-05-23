@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SpriteMove : MonoBehaviour
 {
@@ -9,12 +10,14 @@ public class SpriteMove : MonoBehaviour
     public float jumpForce = 10.0f;
     private float distanceToGround = 0.0f;
     private int jumpCount = 0;
+    public Slider healthbar; 
 
 
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+       healthbar.value = 1.0f;
+       rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -28,6 +31,11 @@ public class SpriteMove : MonoBehaviour
         if (Input.GetKey(KeyCode.RightArrow))
         {
             currentSpeed += speed;
+        }
+
+        if (Input.GetKeyUp(KeyCode.F))
+        {
+            healthbar.value -= 0.1f;
         }
 
         rb.AddForce(new Vector2(currentSpeed * Time.deltaTime, 0.0f), ForceMode2D.Impulse);
@@ -49,6 +57,6 @@ public class SpriteMove : MonoBehaviour
 
     bool IsGrounded()
     {
-        return Physics.Raycast(transform.position, Vector3.down, distanceToGround + 0.1f);
+        return Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), Vector2.down, distanceToGround + 0.1f);
     }
 }
